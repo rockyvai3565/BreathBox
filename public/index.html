@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Breathe Box</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Breathebox" />
+  <meta property="og:description" content="A hypnotic neomorphic breathing guide. A soft shape expands (inhale) and contracts (exhale) in a calm 4–4 rhythm." />
+  <meta property="og:image" content="https://example.com/assets/hero.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+
+  <!-- Farcaster Mini App -->
+  <meta name="fc:miniapp" content="{&quot;version&quot;:&quot;1&quot;,&quot;name&quot;:&quot;Breathebox&quot;,&quot;imageUrl&quot;:&quot;https://example.com/assets/embed-3x2.png&quot;,&quot;button&quot;:{&quot;title&quot;:&quot;Open&quot;,&quot;action&quot;:{&quot;type&quot;:&quot;launch_frame&quot;,&quot;url&quot;:&quot;https://example.com/&quot;}},&quot;splashImageUrl&quot;:&quot;https://example.com/assets/splash.png&quot;,&quot;splashBackgroundColor&quot;:&quot;#020617&quot;}" />
+
+  <!-- Backwards compatible Frame -->
+  <meta name="fc:frame" content="vNext" />
+  <meta name="fc:frame:image" content="https://example.com/assets/embed-3x2.png" />
+  <meta name="fc:frame:button:1" content="Open" />
+  <meta name="fc:frame:button:1:action" content="launch_frame" />
+  <meta name="fc:frame:button:1:target" content="https://example.com/" />
+  <meta name="fc:frame:splash_image" content="https://example.com/assets/splash.png" />
+  <meta name="fc:frame:splash_background_color" content="#020617" />
+
+  <style>
+    :root {
+      --bg: #ECF2FF;
+      --ink: #262C3C;
+      --muted: rgba(38,44,60,.62);
+      --card: #ECF2FF;
+      --shadowD: rgba(195,205,225,.85);
+      --shadowL: rgba(255,255,255,.95);
+      --accent: #93C5FD;
+      --accent2: #A78BFA;
+      --radius: 26px;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(900px 600px at 30% 20%, #F6F9FF 0%, var(--bg) 55%, #E7EEFF 100%);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    #app {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      box-sizing: border-box;
+    }
+
+    .wrap {
+      width: min(520px, 100%);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .sub {
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      box-shadow: 10px 10px 22px var(--shadowD), -10px -10px 22px var(--shadowL);
+      user-select: none;
+    }
+    .pill.mini {
+      outline: 2px solid rgba(167,139,250,.55);
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 18px 18px 40px var(--shadowD), -18px -18px 40px var(--shadowL);
+    }
+
+    .stage {
+      position: relative;
+      height: min(52vh, 420px);
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+    }
+
+    .box {
+      width: 160px;
+      height: 160px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #F7FAFF, #E3EAFF);
+      box-shadow: 16px 16px 32px var(--shadowD), -16px -16px 32px var(--shadowL);
+      outline: 2px solid rgba(147,197,253,.35);
+      animation: breathe 8s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%   { transform: scale(0.92); filter: saturate(1); }
+      50%  { transform: scale(1.10); filter: saturate(1.08); }
+      100% { transform: scale(0.92); filter: saturate(1); }
+    }
+
+    .label {
+      position: absolute;
+      bottom: 18px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      color: rgba(38,44,60,.72);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      box-shadow: 10px 10px 22px var(--shadowD), -10px -10px 22px var(--shadowL);
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      gap: 12px;
+    }
+
+    .minihelp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 750;
+      color: rgba(38,44,60,.74);
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      box-shadow: 6px 6px 14px var(--shadowD), -6px -6px 14px var(--shadowL);
+    }
+
+    .meta {
+      font-size: 13px;
+      font-weight: 800;
+      color: rgba(38,44,60,.62);
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
